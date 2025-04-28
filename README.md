@@ -38,13 +38,18 @@ Flying drone out of the box in offboard control will most likely make them crash
 ## Simulation
 The simulation is a crucial part of the development process. It allows you to test your algorithms and code in a safe and controlled environment. A 2D simulation environment from the link [here](https://github.com.mcas.ms/steffanlloyd/px4-gazebo-sim) should be used to start the development of your system. You can chose to set it up in a VM, however it is recommended to run in natively in Ubuntu. 
 
-![Simulation Environment](images/sim.png)
+<p align="center">
+    <img src="images/sim.png" alt="Simulation Environment" width="600"/>
+</p>
 
 Simulation of 3D lidars can be computationally expensive for your computer but ypu are free to set it up. The real system if equipped with a 3D Livox MID-360 on the top tilted 20 degrees forward, in case you want to match the simulation with the real system.
 
 ## Drones
 I have brought 2 sets for the selected teams. One team will get one drone allocated. If required the drones will be shared amongst teams later. It is competition between teams, not a sabotage competition, trying so will be penalized. 
-![Drone](images/drone.jpg){width=100%}
+
+<p align="center">
+        <img src="images/drone.jpg" alt="Drone" width="400"/>
+</p>
 
 One set is consistent of the list below:
 1. Drone
@@ -70,8 +75,8 @@ As you hopefully will be working with the real drones in the end there are some 
 10. **When working with the drone on the table, only power it with the power supply**
 11. **Alwayes monitor the battery of the drone in flight over qgroundcontrol and do not go below 10%** 
 12. **Always power of the pi correctly, do not power it on if you do not intend to use it**
-            
-        sudo shutdown -h now
+                        
+                sudo shutdown -h now
 
 
 "_I am happy to help and answer any of your questions_"
@@ -82,7 +87,9 @@ swC : Arming switch, Down is armed
 swB : Flight mode selection, {Up; stabilized, Center; Position, Down; Offboard}
 
 Sticks below:
-![sticks](images/sticsk.png)
+<p align="center">
+        <img src="images/sticsk.png" alt="Sticks" width="300"/>
+</p>
 
 To take of in fully "manual" mode make sure to place mode in stabilized, disarm the drone. center the right stick and lower the left stick fully. When you are ready for takeoff, disengage the kill switch and arm the drone, the propellers should spin slowly, increase the throttle until take off. 
 
@@ -92,33 +99,33 @@ At this point you should be familiar with the setup of the drone from the simula
 When the drone is powered on it automatically connect to wifi network with credential you can get from me if needed. As the ethernet port is occupied by the lidar you will not be able to connect on that port. Each drone is setup to connect to a local network hosted by your pc with ip 10.42.0.1, when connected with a USB-Eth adapter.
 
 To find the ip of the pi
-            
-    nmap 10.42.0.1/24
+                        
+        nmap 10.42.0.1/24
 
 ssh to \<scanned ip>
 
-    ssh spade_2@<scanned ip>
-    Password:spade
+        ssh spade_2@<scanned ip>
+        Password:spade
 You should now have access to the raspberry pi
 
 I recommend you to host a local wifi yourself and connect the drone to that:
-    
-    nmcli d wifi connect my_wifi password <password>
-    nmcli d wifi connect my_wifi password <password> hidden yes #if hidden
+        
+        nmcli d wifi connect my_wifi password <password>
+        nmcli d wifi connect my_wifi password <password> hidden yes #if hidden
 
 Use connect your teams computers to the local wifi and perform the ip scan and connect with ssh.
 
 #### Launch link to flight controller
-    source /opt/ros/jazzy/setup.bash
-    cd Micro-XRCE-DDS-Agent/
-    MicroXRCEAgent serial --dev /dev/ttyUSB0 -b 921600
+        source /opt/ros/jazzy/setup.bash
+        cd Micro-XRCE-DDS-Agent/
+        MicroXRCEAgent serial --dev /dev/ttyUSB0 -b 921600
 A long list of messages should occur, if not check the thin usb stick is plugged in. In another terminal on the same network you can check the ros-topics, there should be a bunch of /fmu/in/* and /fmu/out*.  
 
 #### Launch lidar node
-    source /opt/ros/jazzy/setup.bash
-    cd livox_ws/
-    source install/local_setup.bash
-    ros2 launch livox_ros_driver2 rviz_MID360_launch.py
+        source /opt/ros/jazzy/setup.bash
+        cd livox_ws/
+        source install/local_setup.bash
+        ros2 launch livox_ros_driver2 rviz_MID360_launch.py
 
 Check the rospics /livox/imu and /livox/lidar exist and they are active (use ros2 topic hz \<topic>)
 
@@ -136,10 +143,13 @@ For drone 2 you will have to change the default ip of the lidar with the followi
 
 change ip on line 28 in /home/spade_2/livox_ws/install/livox_ros_driver2/share/livox_ros_driver2/config/MID360_config.json to "192.168.1.132", and build package again ->
 
-    cd livox_ws
-    source /opt/ros/jazzy/setup.bash 
-    colcon build
+        cd livox_ws
+        source /opt/ros/jazzy/setup.bash 
+        colcon build
 
 
 Good luck, safe flight and join the telegram channel where i will share information during the challenge if i find it needed... you may miss out.
-![telegram](images/qr.png){width=10%}
+
+<p align="center">
+        <img src="images/qr.png" alt="Telegram QR Code" width="100"/>
+</p>
