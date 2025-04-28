@@ -1,16 +1,9 @@
 # Coimbra-Shift-APPens-SPADE (Drone Navigation and Mapping In Forrest Like Environments)
 Welcome to the Coimbra-Shift-APPens-SPADE repository!
 
-<div>
-    <img src="images/spade_logo.svg" width="5cm" alt="SPADE Logo"/>
-</div>
-
 This repository/README will be your starting point and reference for the future in the challenge.
 
-The challenge presented 
-
 The challenge has several key point for a successful completion, you are a team, solve them together. Some may be working on different part of the solution, but nothing will work if any stone if uncut.
-
 
 ## Pre existing knowledge
 This challenges will require a broad spectrum of knowledge, in case you do not know some or most of the topics below, and are not willing to read and learn during Shift Appens. Then this challenge is not for you.
@@ -43,54 +36,94 @@ guaranteed full coverage. The mapping process will include collision-free flight
 Flying drone out of the box in offboard control will most likely make them crash or damaged, they are expensive equipment, and should be handled accordingly. Only a small selection of spare part have been brought to the Coimbra, a crash may leave the drone in unusable condition. 
 
 ## Simulation
-The simulation is a crucial part of the development process. It allows you to test your algorithms and code in a safe and controlled environment. A 2D simulation environment from the link [here](https://github.com.mcas.ms/steffanlloyd/px4-gazebo-sim) should be used to start the development of your system.
+The simulation is a crucial part of the development process. It allows you to test your algorithms and code in a safe and controlled environment. A 2D simulation environment from the link [here](https://github.com.mcas.ms/steffanlloyd/px4-gazebo-sim) should be used to start the development of your system. You can chose to set it up in a VM, however it is recommended to run in natively in Ubuntu. 
 
 ![Simulation Environment](images/sim.png)
 
-You
-## Use of the drones
+Simulation of 3D lidars can be computationally expensive for your computer but ypu are free to set it up. The real system if equipped with a 3D Livox MID-360 on the top tilted 20 degrees forward, in case you want to match the simulation with the real system.
+
+## Drones
+I have brought 2 sets for the selected teams. One team will get one drone allocated. If required the drones will be shared amongst teams later. It is competition between teams, not a sabotage competition, trying so will be penalized. 
+![Drone](images/Drone.jpeg){width=100%}
+
+1 set is consistent of the list below ??##LKØLLØÆLØLØÆLØÆLØÆLØÆLØÆLØÆLLØÆØ
+
+
+
+### Use of the drones
 As you hopefully will be working with the real drones in the end there are some rules:
 1.  **I do not want to see any injures or damages**
 2.  **Keep your fingers away from the propellers - specially when you power it on or retrieve the drone**
 3.  **When you get to work with the drones with your group the propellers must me taken of!**
+10. **When working with the drone on the table, only power it with the power supply**
 4.  **Loudly tell when the drone is armed and disarmed**
 5.  **No person is allowed in the cage when the drone is armed**
 6.  **When the drone is airborne one pilot should always have the remote in hand to intervene the flight at any time**
 8.  **Charging the batteries should be done in the designated station and in the safety bag**
 9.  **If the battery is hot, let it cool before further use, ask me on telegram of you have any doubt**
-
-I Am happy to help and answer any of your questions.
-
-
-
-
-TODO:
-Make telegram channel
-Link to Simulation
-Link to images and back ups
-
-run MICRO-XRDC-DDS-AGENT
-
-run lidar ros publisher
-make frame fix
+11. **Always power of the pi correctly, do not power it on if you do not intend to use it**
+            
+        sudo shutdown -h now
 
 
-Print spare parts
-legs
-guards
-lidar mount
-TODO:
-Make telegram channel
-Link to Simulation
-Link to images and back ups
-
-run MICRO-XRDC-DDS-AGENT
-
-run lidar ros publisher
-make frame fix
+"_I am happy to help and answer any of your questions_"
 
 
-Print spare parts
-legs
-guards
-lidar mount
+
+At this point you should be familiar with the setup of the drone from the simulation, some things are different in the real drone. When the drone is powered on it automatically connect to wifi network with credential you can get from me. As the ethernet port is occupied by the lidar you will not be able to connect on that port. Each drone is setup to connect to a local network hosted by your pc with ip 10.42.0.1, when connected with a USB-Eth adapter.
+
+To find the ip of the pi
+            
+    nmap 10.42.0.1/24
+
+ssh to \<scanned ip>
+
+    ssh spade_2@<scanned ip>
+    Password:spade
+You should now have access to the raspberry pi
+
+I recommend you to host a local wifi yourself and connect the drone to that:
+    
+    nmcli d wifi connect my_wifi password <password>
+    nmcli d wifi connect my_wifi password <password> hidden yes #if hidden
+
+Use connect your teams computers to the local wifi and perform the ip scan and connect with ssh.
+
+#### Launch link to flight controller
+    source /opt/ros/jazzy/setup.bash
+    cd Micro-XRCE-DDS-Agent/
+    MicroXRCEAgent serial --dev /dev/ttyUSB0 -b 921600
+A long list of messages should occur, if not check the thin usb stick is plugged in. In another terminal on the same network you can check the ros-topics, there should be a bunch of /fmu/in/* and /fmu/out*.  
+
+#### Launch lidar node
+    source /opt/ros/jazzy/setup.bash
+    cd livox_ws/
+    source install/local_setup.bash
+    ros2 launch livox_ros_driver2 rviz_MID360_launch.py
+
+Check the rospics /livox/imu and /livox/lidar exist and they are active (use ros2 topic hz \<topic>)
+
+# [Backups, images & rosbags](https://nextcloud.sdu.dk/index.php/s/mjSyKyrLs4mc3FB)
+Link above will lead you to the backup up the SD card of the pi, the configuration for the flight controllers and some rosbags, that may become handy for testing some of your algorithms.
+
+The content should be self explanatory, some of the rosbags are ROS 1, and will need to be converted to ROS 2 if you would want to use them. The *_gt has ground truth position measure by MoCap system.
+
+### Reconfiguration of motors
+Make shure the motor are asigned to the correct outputs in qgroundcontrol under the actuator tap. The power supply does not supply enough power to spin the motors rapidly. Out may connect the battery to assign the motors, bu be careful. 
+
+## Changes need to drone \#2 after reflash
+### raspberry pi5
+For drone 2 you will have to change the default ip of the lidar with the following guide:
+
+change ip on line 28 in /home/spade_2/livox_ws/install/livox_ros_driver2/share/livox_ros_driver2/config/MID360_config.json to "192.168.1.132", and build package again ->
+
+    cd livox_ws
+    source /opt/ros/jazzy/setup.bash 
+    colcon build
+
+
+
+
+
+Good luck, safe flight and join the telegram channel where i will share information during the challenge if i find it needed... you may miss out.
+![telegram](images/qr.png){width=10%}
