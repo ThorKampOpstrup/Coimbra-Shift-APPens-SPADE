@@ -39,7 +39,7 @@ Flying drone out of the box in offboard control will most likely make them crash
 The simulation is a crucial part of the development process. It allows you to test your algorithms and code in a safe and controlled environment. A 2D simulation environment from the link [here](https://github.com.mcas.ms/steffanlloyd/px4-gazebo-sim) should be used to start the development of your system. You can chose to set it up in a VM, however it is recommended to run in natively in Ubuntu. 
 
 <p align="center">
-    <img src="images/sim.png" alt="Simulation Environment" width="600"/>
+    <img src="images/sim.png" alt="Simulation Environment" width="1000"/>
 </p>
 
 Simulation of 3D lidars can be computationally expensive for your computer but ypu are free to set it up. The real system if equipped with a 3D Livox MID-360 on the top tilted 20 degrees forward, in case you want to match the simulation with the real system.
@@ -48,7 +48,7 @@ Simulation of 3D lidars can be computationally expensive for your computer but y
 I have brought 2 sets for the selected teams. One team will get one drone allocated. If required the drones will be shared amongst teams later. It is competition between teams, not a sabotage competition, trying so will be penalized. 
 
 <p align="center">
-        <img src="images/drone.jpg" alt="Drone" width="400"/>
+        <img src="images/drone.jpg" alt="Drone" width="1000"/>
 </p>
 
 One set is consistent of the list below:
@@ -87,7 +87,7 @@ swC : Arming switch, Down is armed
 swB : Flight mode selection, {Up; stabilized, Center; Position, Down; Offboard}
 
 Sticks below:
-<p align="center">
+<p align="left">
         <img src="images/sticsk.png" alt="Sticks" width="300"/>
 </p>
 
