@@ -57,7 +57,9 @@ One set is consistent of the list below:
 5. Usb-c cable
 6. Telemetry module
 7. Ethernet cable
-8. Power supply, not in image above
+8. Power supply, not in image
+9. 4000Mah 4s LiPo battery, not in image
+10. 3000Mah 4s LiPo battery, not in image
 
 
 
