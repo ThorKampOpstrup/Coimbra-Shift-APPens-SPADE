@@ -44,9 +44,16 @@ Simulation of 3D lidars can be computationally expensive for your computer but y
 
 ## Drones
 I have brought 2 sets for the selected teams. One team will get one drone allocated. If required the drones will be shared amongst teams later. It is competition between teams, not a sabotage competition, trying so will be penalized. 
-![Drone](images/Drone.jpeg){width=100%}
+![Drone](images/drone.jpg){width=100%}
 
-1 set is consistent of the list below ??##LKØLLØÆLØLØÆLØÆLØÆLØÆLØÆLØÆLLØÆØ
+One set is consistent of the list below:
+1. Drone
+2. Transmitter
+3. 2x ethernet to usb dongle
+4. Micro usb cable
+5. Usb-c cable
+6. Telemetry module
+7. Ethernet cable
 
 
 
@@ -55,22 +62,34 @@ As you hopefully will be working with the real drones in the end there are some 
 1.  **I do not want to see any injures or damages**
 2.  **Keep your fingers away from the propellers - specially when you power it on or retrieve the drone**
 3.  **When you get to work with the drones with your group the propellers must me taken of!**
-10. **When working with the drone on the table, only power it with the power supply**
 4.  **Loudly tell when the drone is armed and disarmed**
 5.  **No person is allowed in the cage when the drone is armed**
 6.  **When the drone is airborne one pilot should always have the remote in hand to intervene the flight at any time**
 8.  **Charging the batteries should be done in the designated station and in the safety bag**
 9.  **If the battery is hot, let it cool before further use, ask me on telegram of you have any doubt**
-11. **Always power of the pi correctly, do not power it on if you do not intend to use it**
+10. **When working with the drone on the table, only power it with the power supply**
+11. **Alwayes monitor the battery of the drone in flight over qgroundcontrol and do not go below 10%** 
+12. **Always power of the pi correctly, do not power it on if you do not intend to use it**
             
         sudo shutdown -h now
 
 
 "_I am happy to help and answer any of your questions_"
 
+### Explanation of transmitter setup
+swE : kill switch Down is killed
+swC : Arming switch, Down is armed 
+swB : Flight mode selection, {Up; stabilized, Center; Position, Down; Offboard}
 
+Sticks below:
+![sticks](images/sticsk.png)
 
-At this point you should be familiar with the setup of the drone from the simulation, some things are different in the real drone. When the drone is powered on it automatically connect to wifi network with credential you can get from me. As the ethernet port is occupied by the lidar you will not be able to connect on that port. Each drone is setup to connect to a local network hosted by your pc with ip 10.42.0.1, when connected with a USB-Eth adapter.
+To take of in fully "manual" mode make sure to place mode in stabilized, disarm the drone. center the right stick and lower the left stick fully. When you are ready for takeoff, disengage the kill switch and arm the drone, the propellers should spin slowly, increase the throttle until take off. 
+
+### Explanation of setup on pi
+At this point you should be familiar with the setup of the drone from the simulation, some things are different in the real drone. The raspberry pi5 5 is flashed with ubuntu 24.04, and have ROS jazzy installed. 
+
+When the drone is powered on it automatically connect to wifi network with credential you can get from me if needed. As the ethernet port is occupied by the lidar you will not be able to connect on that port. Each drone is setup to connect to a local network hosted by your pc with ip 10.42.0.1, when connected with a USB-Eth adapter.
 
 To find the ip of the pi
             
@@ -120,9 +139,6 @@ change ip on line 28 in /home/spade_2/livox_ws/install/livox_ros_driver2/share/l
     cd livox_ws
     source /opt/ros/jazzy/setup.bash 
     colcon build
-
-
-
 
 
 Good luck, safe flight and join the telegram channel where i will share information during the challenge if i find it needed... you may miss out.
