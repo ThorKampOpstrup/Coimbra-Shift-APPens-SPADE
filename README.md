@@ -57,6 +57,7 @@ One set is consistent of the list below:
 5. Usb-c cable
 6. Telemetry module
 7. Ethernet cable
+8. Power supply, not in image above
 
 
 
@@ -68,10 +69,11 @@ As you hopefully will be working with the real drones in the end there are some 
 4.  **Loudly tell when the drone is armed and disarmed**
 5.  **No person is allowed in the cage when the drone is armed**
 6.  **When the drone is airborne one pilot should always have the remote in hand to intervene the flight at any time**
-8.  **Charging the batteries should be done in the designated station and in the safety bag**
-9.  **If the battery is hot, let it cool before further use, ask me on telegram of you have any doubt**
-10. **When working with the drone on the table, only power it with the power supply**
-11. **Alwayes monitor the battery of the drone in flight over qgroundcontrol and do not go below 10%** 
+7.  **Charging the batteries should be done in the designated station and in the safety bag**
+8.  **If the battery is hot, let it cool before further use, ask me on telegram of you have any doubt**
+9. **When working with the drone on the table, only power it with the power supply**
+10. **Alwayes monitor the battery of the drone in flight over qgroundcontrol and do not go below 10%** 
+11. **When unplugging wires, pull the plug, not the wire**
 12. **Always power of the pi correctly, do not power it on if you do not intend to use it**
                         
                 sudo shutdown -h now
