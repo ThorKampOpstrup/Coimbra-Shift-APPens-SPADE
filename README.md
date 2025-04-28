@@ -2,7 +2,7 @@
 Welcome to the Coimbra-Shift-APPens-SPADE repository!
 
 <div>
-    <img src="images/UTF-8spade logo.svg" width="5cm" alt="SPADE Logo"/>
+    <img src="images/spade_logo.svg" width="5cm" alt="SPADE Logo"/>
 </div>
 
 This repository/README will be your starting point and reference for the future in the challenge.
