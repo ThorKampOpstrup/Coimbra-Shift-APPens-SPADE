@@ -58,8 +58,8 @@ One set is consistent of the list below:
 6. Telemetry module
 7. Ethernet cable
 8. Power supply, not in image
-9. 4000Mah 4s LiPo battery, not in image
-10. 3000Mah 4s LiPo battery, not in image
+9. 2x 4000Mah 4s LiPo battery, not in image
+10. 2x xt90-xt60 adapter, not in image
 
 
 
