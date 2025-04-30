@@ -22,11 +22,11 @@ This challenges will require a broad spectrum of knowledge, in case you do not k
 ## The challenge
 Your mission is to design an autonomous system that navigates a drone from point A(one end of the cage) to point B(the other end) in a cluttered or non-free space environment—think forests or similarly challenging terrains. The goal is to achieve fast, collision-free flight while generating a real-time map of the surroundings.
 
+##### Selected teams
 Teams will be selected to fly the real drone based on simulations and evaluation from challenge providers, not all teams are guaranteed to fly the real system. However that does not mean you cant have a blast! 
 
-##### Bonus
-Teams that achieve autonomous flight will face an additional challenge to map the entire flight volume with
-guaranteed full coverage. The mapping process will include collision-free flight from multiple different points or a smooth trajectory that will cover the entire volume, without the need for landing and takeoff in the middle, only at the endpoints.
+##### Bonus - Not selected tems
+Teams that achieve autonomous flight will face an additional challenge to map the entire flight volume with guaranteed full coverage. The mapping process will include collision-free flight from multiple different points or a smooth trajectory that will cover the entire volume, without the need for landing and takeoff in the middle, only at the endpoints.
 
 **Bring your innovation, coding skills, and teamwork to conquer this challenge, and let your ideas take flight!**
 
