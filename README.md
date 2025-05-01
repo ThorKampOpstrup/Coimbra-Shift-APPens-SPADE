@@ -139,8 +139,7 @@ The content should be self explanatory, some of the rosbags are ROS 1, and will 
 ### Reconfiguration of motors
 Make shure the motor are asigned to the correct outputs in qgroundcontrol under the actuator tap. The power supply does not supply enough power to spin the motors rapidly. Out may connect the battery to assign the motors, bu be careful. 
 
-## Changes need to drone \#2 after reflash
-### raspberry pi5
+### Changes need to drone \#2 after reflash - raspberry pi5
 For drone 2 you will have to change the default ip of the lidar with the following guide:
 
 change ip on line 28 in /home/spade_2/livox_ws/install/livox_ros_driver2/share/livox_ros_driver2/config/MID360_config.json to "192.168.1.132", and build package again ->
@@ -150,8 +149,8 @@ change ip on line 28 in /home/spade_2/livox_ws/install/livox_ros_driver2/share/l
         colcon build
 
 
-Good luck, safe flight and join the telegram channel where i will share information during the challenge if i find it needed... you may miss out.
+Good luck, safe flight and join the discord channel where i will share information during the challenge if i find it needed... you may miss out.
 
 <p align="center">
-        <img src="images/qr.png" alt="Telegram QR Code" width="100"/>
+        <img src="images/qr_disc.png" alt="Telegram QR Code" width="300"/>
 </p>
